@@ -1,0 +1,23 @@
+[workspace.package]
+repository = "https://github.com/Nukesor/advent_of_code"
+license = "MIT"
+version = "1.0.0"
+edition = "2021"
+publish = false
+
+[workspace]
+members = ["shared", "day_01"]
+resolver = "2"
+
+[profile.dev]
+# Disabling debug info speeds up builds a bunch
+debug = false
+
+[workspace.dependencies]
+anyhow = "1"
+better-panic = "0.3"
+log = "0.4"
+pretty_env_logger = "0.5"
+clap = { version = "4", features = ["derive", "wrap_help", "env", "cargo"] }
+strum = "0.25"
+strum_macros = "0.25"
