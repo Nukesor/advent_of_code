@@ -15,11 +15,11 @@ use shared::init_app;
 const CONSTRAINTS: &[(u32, &str); 3] = &[(12, "red"), (13, "green"), (14, "blue")];
 
 fn main() -> Result<()> {
-    init_app(3);
+    init_app(1);
 
     let input = read_to_string("/home/nuke/temp/advent_of_code/02.txt")?;
 
-    //part_one(&input);
+    part_one(&input);
     part_two(&input);
 
     Ok(())
@@ -30,7 +30,7 @@ fn part_one(input: &str) {
     'lines: for line in input.lines() {
         debug!("Line: {line}");
         let (line, (_, game_id, _)) = parse_game(line).unwrap();
-        let (_, rounds) = separated_list0(tag("; "), parse_colors)(&line).unwrap();
+        let (_, rounds) = separated_list0(tag("; "), parse_colors)(line).unwrap();
 
         for seen_colors in rounds {
             for (max_amount, color) in CONSTRAINTS {
@@ -55,7 +55,7 @@ fn part_two(input: &str) {
     for line in input.lines() {
         debug!("Line: {line}");
         let (line, (_, _, _)) = parse_game(line).unwrap();
-        let (_, rounds) = separated_list0(tag("; "), parse_colors)(&line).unwrap();
+        let (_, rounds) = separated_list0(tag("; "), parse_colors)(line).unwrap();
 
         let mut min_color_set = HashMap::new();
         for seen_colors in rounds {
@@ -88,7 +88,7 @@ fn parse_game(input: &str) -> IResult<&str, (&str, u32, &str)> {
 fn parse_colors(input: &str) -> IResult<&str, HashMap<String, u32>> {
     let (input, colors) = separated_list0(tag(", "), parse_color)(input)?;
 
-    Ok((input, HashMap::from_iter(colors.into_iter())))
+    Ok((input, HashMap::from_iter(colors)))
 }
 
 fn parse_color(input: &str) -> IResult<&str, (String, u32)> {
