@@ -8,10 +8,10 @@ pub fn init_app(verbosity: u8) {
 
     // Set the verbosity level and initialize the logger.
     let level = match verbosity {
-        0 => LevelFilter::Error,
-        1 => LevelFilter::Warn,
-        2 => LevelFilter::Info,
-        _ => LevelFilter::Debug,
+        0 => LevelFilter::Warn,
+        1 => LevelFilter::Info,
+        2 => LevelFilter::Debug,
+        _ => LevelFilter::Trace,
     };
     Builder::new().filter_level(level).init();
 }

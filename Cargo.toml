@@ -6,7 +6,7 @@ edition = "2021"
 publish = false
 
 [workspace]
-members = ["shared", "day_01"]
+members = ["shared", "day_01", "day_02"]
 resolver = "2"
 
 [profile.dev]

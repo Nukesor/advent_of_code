@@ -17,10 +17,10 @@ const WORD_DIGITS: [(u32, &str); 9] = [
 ];
 
 fn main() -> Result<()> {
-    init_app(3);
+    init_app(1);
 
     let input = read_to_string("/home/nuke/temp/advent_of_code/01.txt")?;
-    part_one(input.clone())?;
+    part_one(&input)?;
 
     // Scan the whole word for all digits.
     // We then take the the first and the last digit.
@@ -90,7 +90,7 @@ fn scan_for_digit_word(line: &[char], index: usize) -> Option<u32> {
     None
 }
 
-fn part_one(input: String) -> Result<()> {
+fn part_one(input: &str) -> Result<()> {
     let mut sum = 0;
     for line in input.lines() {
         let first = line.chars().find(|c| c.is_ascii_digit()).unwrap();
