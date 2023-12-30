@@ -211,6 +211,19 @@ dependencies = [
 ]
 
 [[package]]
+name = "day_03"
+version = "1.0.0"
+dependencies = [
+ "anyhow",
+ "clap",
+ "log",
+ "nom",
+ "shared",
+ "strum",
+ "strum_macros",
+]
+
+[[package]]
 name = "encode_unicode"
 version = "0.3.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
